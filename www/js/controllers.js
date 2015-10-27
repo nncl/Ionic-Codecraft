@@ -2,7 +2,7 @@ var app = angular.module('starter.controllers', []);
 
 app.controller('DashCtrl', function($scope) {
   $scope.title = "Moooo....";
-})
+});
 
 app.controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -17,14 +17,18 @@ app.controller('ChatsCtrl', function($scope, Chats) {
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
-})
+});
 
 app.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
-})
+});
 
 app.controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };
+});
+
+app.controller('MyCustomController', function( $scope ){
+  $scope.title = 'Moooo....';
 });
