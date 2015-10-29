@@ -1,3 +1,3 @@
 # Ionic-Codecraft
 
-Project that accompanying the codecraft's classes.
+Project that is accompanying the codecraft's classes.
