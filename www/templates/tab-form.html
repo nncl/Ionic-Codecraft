@@ -1,0 +1,31 @@
+<ion-view view-title="{{ title }}">
+  <ion-content class="padding" ng-init="foo='Mooo...'">
+    <div class="list card">
+      <div class="item item-divider"> My first form </div>
+      <div class="item item-body">
+
+        <div>
+          <label class="item item-input">
+            <span class="input-label">rootScope</span>
+            <input type="text" ng-model="foo">
+          </label>
+        </div>
+
+        <div ng-controller="firstCtrl">
+          <label class="item item-input">
+            <span class="input-label">childScope</span>
+            <input type="text" ng-model="foo">
+          </label>
+        </div>
+
+        <div ng-controller="secondCtrl">
+          <label class="item item-input">
+            <span class="input-label">grandChildScope</span>
+            <input type="text" ng-model="foo">
+          </label>
+        </div>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

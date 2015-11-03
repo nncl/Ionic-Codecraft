@@ -32,3 +32,16 @@ app.controller('AccountCtrl', function($scope) {
 app.controller('MyCustomController', function( $scope ){
   $scope.title = 'Moooo....';
 });
+
+app.controller('FormCtrl', function( $scope ){
+
+});
+
+app.controller('firstCtrl', function( $scope ){
+
+});
+
+app.controller('secondCtrl', function( $scope ){
+  // For the problem of binding different scope's variables you can not
+  // just need bind a scale value, you need to declare the property of an object.
+});
