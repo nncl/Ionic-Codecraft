@@ -50,3 +50,11 @@ app.controller('secondCtrl', function( $scope ){
     console.log(newVal);
   })
 });
+
+app.controller('myFormCtrl', function( $scope ){
+  $scope.model = {};
+
+  $scope.login = function() {
+    console.log('Login');
+  }
+});
