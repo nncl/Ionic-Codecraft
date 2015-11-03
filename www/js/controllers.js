@@ -38,10 +38,15 @@ app.controller('FormCtrl', function( $scope ){
 });
 
 app.controller('firstCtrl', function( $scope ){
-
+  // For the problem of binding different scope's variables you can not
+  // just need bind a scale value, you need to declare the property of an object.
 });
 
 app.controller('secondCtrl', function( $scope ){
-  // For the problem of binding different scope's variables you can not
-  // just need bind a scale value, you need to declare the property of an object.
+  $scope.myvar = 'myvar';
+
+  $scope.$watch('myvar', function(newVal, oldVal) {
+    console.log(oldVal);
+    console.log(newVal);
+  })
 });
