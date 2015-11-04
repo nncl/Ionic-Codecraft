@@ -1,0 +1,26 @@
+<ion-view view-title="{{ title }}">
+  <ion-content class="padding">
+      <div class="bar bar-header"
+        ng-class=" {
+        'bar-stable' : model.color == 'stable',
+        'bar-assertive' : model.color == 'assertive',
+        'bar-calm' : model.color == 'calm'
+        } ">
+        <h1 class="title"> {{model.color}} </h1>
+      </div>
+
+      <br/>
+      <br/>
+      <br/>
+
+      <ion-radio  ng-model="model.color"
+                  ng-value="'stable'">Stable
+      </ion-radio>
+      <ion-radio  ng-model="model.color"
+                  ng-value="'assertive'">Assertive
+      </ion-radio>
+      <ion-radio  ng-model="model.color"
+                  ng-value="'calm'">Calm
+      </ion-radio>
+  </ion-content>
+</ion-view>

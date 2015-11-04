@@ -87,6 +87,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'FormCtrl'
       }
     }
+  })
+
+  .state('tab.class', {
+    url: '/class',
+    views: {
+      'tab-class': {
+        templateUrl: 'templates/tab-class.html',
+        controller: 'ClassCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback

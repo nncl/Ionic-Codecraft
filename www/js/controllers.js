@@ -58,3 +58,10 @@ app.controller('myFormCtrl', function( $scope ){
     console.log('Login');
   }
 });
+
+app.controller('ClassCtrl', function( $scope ){
+  // Starting the bar with stable color and class
+  $scope.model = {
+    'color' : 'stable'
+  }
+});
