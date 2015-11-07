@@ -97,6 +97,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'ClassCtrl'
       }
     }
+  })
+
+  .state('tab.repfil', {
+    url: '/repfil',
+    views: {
+      'tab-repfil': {
+        templateUrl: 'templates/tab-repfil.html',
+        controller: 'RepeatFiltersCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback

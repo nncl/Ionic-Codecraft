@@ -1,0 +1,16 @@
+<ion-view view-title="{{ title }}">
+  <ion-content class="padding">
+    <h3>Ordering by still youngest</h3>
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="model.search.$">
+      </label>
+    </div>
+
+    <div ng-repeat="contact in model.contacts | orderBy:'-birthdate' | filter: model.search">
+      {{ contact.name }} | {{ contact.birthdate | date:"longDate" }}
+    </div>
+  </ion-content>
+</ion-view>
