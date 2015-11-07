@@ -1,7 +1,13 @@
 <ion-view view-title="Account">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
+    <ion-toggle  ng-model="settings.enableFriends" ng-if="show">
+        Enable Friends
+    </ion-toggle>
+    <ion-toggle  ng-model="settings.enableFriends" ng-hide="!show">
+        Enable Friends
+    </ion-toggle>
+    <ion-toggle  ng-model="settings.enableFriends" ng-show="!show">
         Enable Friends
     </ion-toggle>
     </ion-list>

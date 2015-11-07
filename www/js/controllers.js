@@ -27,6 +27,8 @@ app.controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };
+
+  $scope.show = false;
 });
 
 app.controller('MyCustomController', function( $scope ){
