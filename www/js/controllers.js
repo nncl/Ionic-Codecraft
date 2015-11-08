@@ -83,3 +83,19 @@ app.controller('RepeatFiltersCtrl', function( $scope, ContactService ){
 
   // $scope.model = ContactService;
 });
+
+app.controller('DigestCtrl', function( $scope, $timeout ){
+  $scope.msg = "Hello";
+  $scope.touch = 1;
+
+  // setTimeout(function() {
+  //   console.log("setTimeout called");
+  //   $scope.msg = "World"
+  // }, 1000);
+
+  $timeout(function(){
+    console.log('setTimeout called!');
+    $scope.msg = "World";
+  }, 1000);
+
+});

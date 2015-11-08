@@ -110,6 +110,16 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         controller: 'RepeatFiltersCtrl'
       }
     }
+  })
+
+  .state('tab.digest', {
+    url: '/digest',
+    views: {
+      'tab-digest': {
+        templateUrl: 'templates/digest.html',
+        controller: 'DigestCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
