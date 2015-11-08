@@ -1,9 +1,5 @@
 var app = angular.module('starter.services', []);
 
-app.config(function ($httpProvider) {
-  $httpProvider.defaults.headers.common['Authorization'] = 'Token 8286adb00e144417ea099cc6bdc0cf2d72eae4d0';
-});
-
 app.factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
