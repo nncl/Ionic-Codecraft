@@ -49,21 +49,25 @@ app.factory('Chats', function() {
   };
 });
 
-app.service('ContactService', function( $http ) {
+app.service('ContactService', function( $http, $q ) {
   var self = {
     'contacts' : [],
     'loadContacts' : function(){
+      var d = $q.defer();
       $http.get("https://codecraftpro.com/api/samples/v1/contact/")
       .success(function success(data){
-        console.log(data);
+        console.log(self);
         self.contacts = data.results;
+        d.resolve('Yo, data received!');
       })
 
       .error(function error(msg){
-        console.log(msg);
+        console.error(msg);
+        d.reject('Ops! The http request returned an error.');
       });
+      return d.promise;
     }
-  }
+  };
 
   return self;
 });

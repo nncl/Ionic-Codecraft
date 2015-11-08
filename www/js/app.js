@@ -25,6 +25,7 @@ app.run(function($ionicPlatform) {
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
+  // API auth's permission
   $httpProvider.defaults.headers.common['Authorization'] = 'Token 8286adb00e144417ea099cc6bdc0cf2d72eae4d0';
 
   // Ionic uses AngularUI Router which uses the concept of states

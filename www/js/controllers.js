@@ -69,6 +69,17 @@ app.controller('ClassCtrl', function( $scope ){
 });
 
 app.controller('RepeatFiltersCtrl', function( $scope, ContactService ){
-  ContactService.loadContacts();
-  $scope.model = ContactService;
+
+  $scope.model = {
+    'contacts' : []
+  };
+
+  ContactService.loadContacts().then(function success(data){
+    console.log(data);
+    $scope.model.contacts = ContactService.contacts;
+  }, function error(msg){
+    console.error(msg);
+  });
+
+  // $scope.model = ContactService;
 });
