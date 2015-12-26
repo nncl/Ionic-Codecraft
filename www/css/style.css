@@ -1,1 +1,10 @@
-/* Empty. Add your own CSS if you like */
+.bar-header,
+.tabs {
+    background-color: #2e2e2e !important;
+}
+
+.bar.bar-stable .title,
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active,
+.bar-stable .button.button-clear {
+    color: #fff !important;
+}

@@ -47,12 +47,8 @@
       ng-class=" { 'item-avatar' : post.thumbnail } ">
         <img ng-if="post.thumbnail" ng-src="{{post.thumbnail}}">
         <h2>{{post.title}}</h2>
-        <p>{{post.id}}</p>
+        <p>By {{post.author.name}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
       </ion-item>
     </ion-list>
 
