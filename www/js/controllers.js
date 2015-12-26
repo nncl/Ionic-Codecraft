@@ -99,3 +99,47 @@ app.controller('DigestCtrl', function( $scope, $timeout ){
   }, 1000);
 
 });
+
+app.controller('WPCtrl', function($scope, $state, $rootScope, WPService) {
+  // Reseting all the motherfuckers
+  $scope.loading = true;
+  $scope.posts = [];
+  $scope.error = false;
+
+  WPService.loadPosts().then(function success(response){
+    $scope.loading = WPService.isLoading;
+    $scope.posts = WPService.posts;
+  }, function error(err){
+    $scope.error = true;
+    $scope.loading = WPService.isLoading;
+  });
+
+  // Refresh
+  $scope.doRefresh = function(){
+    $scope.posts = [];
+
+    if (!$scope.loading) {
+      WPService.refresh().then(function(){
+        $scope.loading = false;
+        $scope.posts = WPService.posts;
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+    };
+  }
+
+  $scope.goToPost = function(post) {
+    $rootScope.id = post.id;
+    $state.go('tab.post');
+  }
+})
+
+app.controller('PostCtrl', function($scope, $rootScope, WPPost) {
+  $scope.id = $rootScope.id;
+  $scope.post = {};
+
+  WPPost.getPost($scope.id).then(function success(response){
+    $scope.post = WPPost.post;
+  }, function error(err){
+    console.error(err);
+  });
+});

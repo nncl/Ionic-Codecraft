@@ -71,3 +71,64 @@ app.service('ContactService', function( $http, $q ) {
 
   return self;
 });
+
+app.service('WPService', function($http, $q){
+    var self = {
+        'posts' : {},
+        'isLoading' : false,
+        'refresh': function () {
+          self.isLoading = false;
+          self.posts = {};
+          return self.loadPosts();
+        },
+        'loadPosts' : function(){
+            var deferred = $q.defer();
+            self.isLoading = true;
+
+            $http.get('http://beta.cauealmeida.com/?json=1')
+                .success(function(response){
+                  console.log(response);
+                  self.isLoading = false;
+                  self.posts = response.posts;
+                  deferred.resolve();
+                })
+
+                .error(function(err){
+                  self.isLoading = false;
+                  console.log(err);
+                  deferred.reject(err);
+                })
+
+            return deferred.promise;
+        }
+    }
+
+    return self;
+});
+
+app.service('WPPost', function($http, $q){
+  var self = {
+    'post' : {},
+    'getPost' : function(id){
+      var d = $q.defer();
+
+      $http.get('http://beta.cauealmeida.com/?json=get_post&post_id=' + id)
+        .success(function(response){
+          console.log('Cool');
+          console.log(response);
+          self.post = response.post;
+          d.resolve();
+        })
+
+        .error(function(err){
+          console.log('Fuckk!!');
+          return err;
+          d.reject();
+        })
+
+      return d.promise;
+    }
+  }
+
+  return self;
+});

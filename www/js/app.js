@@ -26,7 +26,7 @@ app.run(function($ionicPlatform) {
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   // API auth's permission
-  $httpProvider.defaults.headers.common['Authorization'] = 'Token 8286adb00e144417ea099cc6bdc0cf2d72eae4d0';
+  // $httpProvider.defaults.headers.common['Authorization'] = 'Token 8286adb00e144417ea099cc6bdc0cf2d72eae4d0';
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -74,10 +74,21 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('tab.account', {
     url: '/account',
+    cache : true,
     views: {
       'tab-account': {
         templateUrl: 'templates/tab-account.html',
         controller: 'AccountCtrl'
+      }
+    }
+  })
+  .state('tab.post', {
+    url: '/post',
+    cache : true,
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/tab-post.html',
+        controller: 'PostCtrl'
       }
     }
   })
