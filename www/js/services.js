@@ -74,22 +74,37 @@ app.service('ContactService', function( $http, $q ) {
 
 app.service('WPService', function($http, $q){
     var self = {
-        'posts' : {},
+        'posts' : [],
         'isLoading' : false,
+        'hasMore' : true,
+        'page' : 1,
+        'next' : function() {
+          self.page += 1;
+          return self.loadPosts();
+        },
         'refresh': function () {
           self.isLoading = false;
-          self.posts = {};
+          self.page = 1;
+          self.posts = [];
           return self.loadPosts();
         },
         'loadPosts' : function(){
             var deferred = $q.defer();
             self.isLoading = true;
 
-            $http.get('http://beta.cauealmeida.com/?json=1')
+            $http.get('http://beta.cauealmeida.com/?json=1&page=' + self.page)
                 .success(function(response){
                   console.log(response);
                   self.isLoading = false;
-                  self.posts = response.posts;
+
+                  if (response.posts.length == 0) {
+                    self.hasMore = false;
+                  } else {
+                    for (var i = 0; i < response.posts.length; i++) {
+                      self.posts.push(response.posts[i]);
+                    };
+                  };
+
                   deferred.resolve();
                 })
 

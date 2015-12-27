@@ -105,6 +105,7 @@ app.controller('WPCtrl', function($scope, $state, $rootScope, WPService) {
   $scope.loading = true;
   $scope.posts = [];
   $scope.error = false;
+  $scope.wp = WPService;
 
   WPService.loadPosts().then(function success(response){
     $scope.loading = WPService.isLoading;
@@ -113,6 +114,15 @@ app.controller('WPCtrl', function($scope, $state, $rootScope, WPService) {
     $scope.error = true;
     $scope.loading = WPService.isLoading;
   });
+
+  // Next
+  $scope.loadMore = function() {
+    if (!$scope.loading && $scope.wp.hasMore) {
+      WPService.next().then(function(){
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      });
+    };
+  }
 
   // Refresh
   $scope.doRefresh = function(){
